@@ -1,0 +1,208 @@
+{
+  "keywords": [
+    {
+      "uoa_code": "UoA 1",
+      "uoa_name": "Clinical Medicine",
+      "panel": "A",
+      "keywords": ["clinical medicine", "oncology", "cardiology", "neurology", "gastroenterology", "hepatology", "endocrinology", "dermatology", "rheumatology", "haematology", "infectious disease", "respiratory medicine", "renal", "transplant", "surgery", "medical school", "clinical academic", "medicine faculty", "school of medicine", "faculty of medicine", "medical sciences", "clinical science"]
+    },
+    {
+      "uoa_code": "UoA 2",
+      "uoa_name": "Public Health, Health Services and Primary Care",
+      "panel": "A",
+      "keywords": ["public health", "health services", "primary care", "epidemiology", "health policy", "population health", "general practice", "gp research", "community health", "preventive medicine", "global health", "health economics", "health systems", "palliative care", "occupational health", "school of public health", "institute of public health"]
+    },
+    {
+      "uoa_code": "UoA 3",
+      "uoa_name": "Allied Health Professions, Dentistry, Nursing and Pharmacy",
+      "panel": "A",
+      "keywords": ["pharmacy", "pharmaceutical", "nursing", "dentistry", "dental", "physiotherapy", "occupational therapy", "radiography", "speech therapy", "midwifery", "allied health", "health professions", "school of nursing", "school of pharmacy", "school of dentistry", "school of health sciences", "faculty of health"]
+    },
+    {
+      "uoa_code": "UoA 4",
+      "uoa_name": "Psychology, Psychiatry and Neuroscience",
+      "panel": "A",
+      "keywords": ["psychology", "psychiatry", "neuroscience", "cognitive science", "mental health", "behavioural science", "behavioral science", "clinical psychology", "neuropsychology", "psychotherapy", "school of psychology", "department of psychology", "institute of neuroscience", "brain sciences"]
+    },
+    {
+      "uoa_code": "UoA 5",
+      "uoa_name": "Biological Sciences",
+      "panel": "A",
+      "keywords": ["biology", "biochemistry", "molecular biology", "cell biology", "genetics", "microbiology", "immunology", "physiology", "zoology", "botany", "ecology", "evolutionary biology", "structural biology", "bioinformatics", "systems biology", "school of biology", "department of biology", "life sciences", "biological sciences", "institute of molecular biology"]
+    },
+    {
+      "uoa_code": "UoA 6",
+      "uoa_name": "Agriculture, Food and Veterinary Sciences",
+      "panel": "A",
+      "keywords": ["agriculture", "agricultural", "food science", "veterinary", "animal science", "crop science", "soil science", "agronomy", "food technology", "aquaculture", "horticulture", "school of agriculture", "department of agriculture", "school of food", "veterinary medicine", "school of veterinary"]
+    },
+    {
+      "uoa_code": "UoA 7",
+      "uoa_name": "Earth Systems and Environmental Sciences",
+      "panel": "B",
+      "keywords": ["earth sciences", "earth system", "geology", "geophysics", "oceanography", "atmospheric science", "climate science", "environmental science", "geochemistry", "hydrology", "glaciology", "volcanology", "seismology", "school of earth", "department of earth", "earth and environment", "environmental systems"]
+    },
+    {
+      "uoa_code": "UoA 8",
+      "uoa_name": "Chemistry",
+      "panel": "B",
+      "keywords": ["chemistry", "chemical", "organic chemistry", "inorganic chemistry", "physical chemistry", "analytical chemistry", "polymer chemistry", "materials chemistry", "school of chemistry", "department of chemistry", "faculty of chemistry", "chemical biology"]
+    },
+    {
+      "uoa_code": "UoA 9",
+      "uoa_name": "Physics",
+      "panel": "B",
+      "keywords": ["physics", "astrophysics", "particle physics", "condensed matter", "quantum physics", "optics", "photonics", "plasma physics", "nuclear physics", "cosmology", "school of physics", "department of physics", "faculty of physics", "institute of physics"]
+    },
+    {
+      "uoa_code": "UoA 10",
+      "uoa_name": "Mathematical Sciences",
+      "panel": "B",
+      "keywords": ["mathematics", "mathematical", "statistics", "applied mathematics", "pure mathematics", "operational research", "probability", "actuarial", "school of mathematics", "department of mathematics", "faculty of mathematics", "mathematical sciences"]
+    },
+    {
+      "uoa_code": "UoA 11",
+      "uoa_name": "Computer Science and Informatics",
+      "panel": "B",
+      "keywords": ["computer science", "computing", "informatics", "artificial intelligence", "machine learning", "software engineering", "cybersecurity", "data science", "human-computer interaction", "algorithms", "networks", "distributed systems", "school of computing", "department of computer", "faculty of computing", "school of informatics", "computer engineering"]
+    },
+    {
+      "uoa_code": "UoA 12",
+      "uoa_name": "Engineering",
+      "panel": "B",
+      "keywords": ["engineering", "mechanical engineering", "electrical engineering", "electronic engineering", "civil engineering", "chemical engineering", "aerospace engineering", "biomedical engineering", "manufacturing engineering", "systems engineering", "school of engineering", "faculty of engineering", "department of engineering", "college of engineering"]
+    },
+    {
+      "uoa_code": "UoA 13",
+      "uoa_name": "Architecture, Built Environment and Planning",
+      "panel": "C",
+      "keywords": ["architecture", "urban planning", "town planning", "built environment", "landscape architecture", "urban design", "construction management", "real estate", "housing", "planning", "school of architecture", "department of architecture", "bartlett", "faculty of built environment"]
+    },
+    {
+      "uoa_code": "UoA 14",
+      "uoa_name": "Geography and Environmental Studies",
+      "panel": "C",
+      "keywords": ["geography", "human geography", "physical geography", "environmental studies", "urban geography", "development geography", "cultural geography", "geopolitics", "regional studies", "school of geography", "department of geography", "geographical sciences"]
+    },
+    {
+      "uoa_code": "UoA 15",
+      "uoa_name": "Archaeology",
+      "panel": "C",
+      "keywords": ["archaeology", "archaeological", "prehistory", "heritage", "museum studies", "geoarchaeology", "osteoarchaeology", "school of archaeology", "department of archaeology", "institute of archaeology"]
+    },
+    {
+      "uoa_code": "UoA 16",
+      "uoa_name": "Economics and Econometrics",
+      "panel": "C",
+      "keywords": ["economics", "econometrics", "macroeconomics", "microeconomics", "labour economics", "development economics", "financial economics", "health economics", "school of economics", "department of economics", "faculty of economics", "institute of economics"]
+    },
+    {
+      "uoa_code": "UoA 17",
+      "uoa_name": "Business and Management Studies",
+      "panel": "C",
+      "keywords": ["business", "management", "business school", "marketing", "finance", "accounting", "strategy", "entrepreneurship", "organisational", "human resources", "supply chain", "operations management", "innovation management", "business administration", "mba", "faculty of business", "school of management", "college of business", "cardiff business school"]
+    },
+    {
+      "uoa_code": "UoA 18",
+      "uoa_name": "Law",
+      "panel": "C",
+      "keywords": ["law", "legal", "jurisprudence", "criminology", "criminal justice", "international law", "commercial law", "human rights law", "constitutional law", "school of law", "faculty of law", "department of law", "law school"]
+    },
+    {
+      "uoa_code": "UoA 19",
+      "uoa_name": "Politics and International Studies",
+      "panel": "C",
+      "keywords": ["politics", "political science", "international relations", "international studies", "public policy", "public administration", "governance", "security studies", "european studies", "school of politics", "department of politics", "faculty of social sciences", "political economy"]
+    },
+    {
+      "uoa_code": "UoA 20",
+      "uoa_name": "Social Work and Social Policy",
+      "panel": "C",
+      "keywords": ["social work", "social policy", "social welfare", "social care", "child welfare", "community development", "disability studies", "poverty", "school of social work", "department of social work", "social sciences and social work"]
+    },
+    {
+      "uoa_code": "UoA 21",
+      "uoa_name": "Sociology",
+      "panel": "C",
+      "keywords": ["sociology", "social theory", "cultural sociology", "gender studies", "race and ethnicity", "inequality", "migration studies", "criminology", "school of sociology", "department of sociology", "sociological studies"]
+    },
+    {
+      "uoa_code": "UoA 22",
+      "uoa_name": "Anthropology and Development Studies",
+      "panel": "C",
+      "keywords": ["anthropology", "social anthropology", "cultural anthropology", "development studies", "international development", "ethnography", "school of anthropology", "department of anthropology", "faculty of development"]
+    },
+    {
+      "uoa_code": "UoA 23",
+      "uoa_name": "Education",
+      "panel": "C",
+      "keywords": ["education", "pedagogy", "curriculum", "higher education", "teacher education", "educational psychology", "learning sciences", "school of education", "faculty of education", "department of education", "institute of education", "college of education"]
+    },
+    {
+      "uoa_code": "UoA 24",
+      "uoa_name": "Sport and Exercise Sciences, Leisure and Tourism",
+      "panel": "C",
+      "keywords": ["sport science", "exercise science", "sports medicine", "kinesiology", "physical education", "leisure studies", "tourism", "hospitality", "recreation", "school of sport", "department of sport", "faculty of sport", "institute of sport"]
+    },
+    {
+      "uoa_code": "UoA 25",
+      "uoa_name": "Area Studies",
+      "panel": "D",
+      "keywords": ["area studies", "african studies", "asian studies", "middle east studies", "latin american studies", "south asian studies", "east asian studies", "chinese studies", "japanese studies", "russian studies", "slavonic studies", "school of oriental"]
+    },
+    {
+      "uoa_code": "UoA 26",
+      "uoa_name": "Modern Languages and Linguistics",
+      "panel": "D",
+      "keywords": ["modern languages", "linguistics", "language", "applied linguistics", "translation", "interpreting", "french", "german", "spanish", "italian", "portuguese", "arabic", "chinese language", "japanese language", "school of modern languages", "department of linguistics", "faculty of modern languages"]
+    },
+    {
+      "uoa_code": "UoA 27",
+      "uoa_name": "English Language and Literature",
+      "panel": "D",
+      "keywords": ["english literature", "english language", "literary studies", "creative writing", "english studies", "school of english", "department of english", "faculty of english", "english and creative writing", "english and american literature"]
+    },
+    {
+      "uoa_code": "UoA 28",
+      "uoa_name": "History",
+      "panel": "D",
+      "keywords": ["history", "historical studies", "ancient history", "medieval history", "modern history", "economic history", "imperial history", "oral history", "school of history", "department of history", "faculty of history", "institute of historical research"]
+    },
+    {
+      "uoa_code": "UoA 29",
+      "uoa_name": "Classics",
+      "panel": "D",
+      "keywords": ["classics", "classical studies", "ancient greek", "latin", "ancient rome", "ancient greece", "classical antiquity", "hellenistic", "school of classics", "department of classics"]
+    },
+    {
+      "uoa_code": "UoA 30",
+      "uoa_name": "Philosophy",
+      "panel": "D",
+      "keywords": ["philosophy", "ethics", "logic", "metaphysics", "epistemology", "political philosophy", "moral philosophy", "philosophy of science", "school of philosophy", "department of philosophy", "faculty of philosophy"]
+    },
+    {
+      "uoa_code": "UoA 31",
+      "uoa_name": "Theology and Religious Studies",
+      "panel": "D",
+      "keywords": ["theology", "religious studies", "divinity", "biblical studies", "christian theology", "islamic studies", "jewish studies", "buddhist studies", "school of theology", "department of theology", "faculty of theology", "divinity school"]
+    },
+    {
+      "uoa_code": "UoA 32",
+      "uoa_name": "Art and Design: History, Practice and Theory",
+      "panel": "D",
+      "keywords": ["art", "design", "fine art", "visual arts", "art history", "graphic design", "fashion design", "industrial design", "interior design", "art practice", "school of art", "department of art", "faculty of art", "college of art", "school of design"]
+    },
+    {
+      "uoa_code": "UoA 33",
+      "uoa_name": "Music, Drama, Dance, Performing Arts, Film and Screen Studies",
+      "panel": "D",
+      "keywords": ["music", "drama", "dance", "performing arts", "theatre", "theater", "film studies", "screen studies", "cinema", "musicology", "performance studies", "school of music", "department of music", "faculty of music", "school of drama", "conservatoire", "school of performing arts", "screen and film"]
+    },
+    {
+      "uoa_code": "UoA 34",
+      "uoa_name": "Communication, Cultural and Media Studies, Library and Information Management",
+      "panel": "D",
+      "keywords": ["media studies", "communication", "cultural studies", "journalism", "broadcasting", "digital media", "media and communication", "library", "information management", "information science", "publishing", "school of journalism", "school of media", "department of media", "faculty of media", "media and journalism", "school of communication", "school of information"]
+    }
+  ]
+}

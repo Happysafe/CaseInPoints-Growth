@@ -1,0 +1,7 @@
+anthropic>=0.40.0
+openpyxl
+pandas
+pdfplumber
+requests
+beautifulsoup4
+python-dotenv
