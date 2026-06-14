@@ -4,3 +4,7 @@ __pycache__/
 *.pyc
 *.pyo
 .DS_Store
+
+# Local tooling + proprietary lead list (PII — keep off the public repo)
+.claude/
+Research Impact Market.xlsx

@@ -1,21 +1,29 @@
 from __future__ import annotations
 
 import json
-import os
 import re
+from pathlib import Path
 
 
-_DATA_PATH = os.path.join(os.path.dirname(__file__), '..', 'data', 'uoa_lookup.json')
+_DATA_PATH = Path(__file__).parent.parent / 'data' / 'uoa_lookup.json'
 _LOOKUP: list[dict] | None = None
 
-CONFIDENCE_THRESHOLD = 1  # at least 1 keyword must match
+# Minimum number of matching keywords required to accept a UoA match
+MIN_KEYWORD_MATCHES = 1
 
 
 def _load_lookup() -> list[dict]:
     global _LOOKUP
     if _LOOKUP is None:
         with open(_DATA_PATH) as f:
-            _LOOKUP = json.load(f)['keywords']
+            raw = json.load(f)['keywords']
+        # Pre-compile a regex for each keyword so infer_uoa doesn't recompile on every call
+        for entry in raw:
+            entry['_patterns'] = [
+                re.compile(r'\b' + re.escape(kw) + r'\b', re.IGNORECASE)
+                for kw in entry['keywords']
+            ]
+        _LOOKUP = raw
     return _LOOKUP
 
 
@@ -30,23 +38,21 @@ def infer_uoa(position: str, university: str = '') -> dict:
 
     best = None
     best_score = 0
-    best_keywords = []
+    best_keywords: list[str] = []
 
     for entry in lookup:
-        matched = []
-        for kw in entry['keywords']:
-            pattern = re.compile(r'\b' + re.escape(kw) + r'\b', re.IGNORECASE)
-            if pattern.search(text):
-                matched.append(kw)
-        score = len(matched)
-        # Prefer longer keyword matches (more specific)
+        matched = [
+            kw for kw, pattern in zip(entry['keywords'], entry['_patterns'])
+            if pattern.search(text)
+        ]
+        # Weight by total character length so longer (more specific) keywords win ties
         weighted = sum(len(kw) for kw in matched)
         if weighted > best_score:
             best_score = weighted
             best = entry
             best_keywords = matched
 
-    if best and len(best_keywords) >= CONFIDENCE_THRESHOLD:
+    if best and len(best_keywords) >= MIN_KEYWORD_MATCHES:
         return {
             'uoa_code': best['uoa_code'],
             'uoa_name': best['uoa_name'],

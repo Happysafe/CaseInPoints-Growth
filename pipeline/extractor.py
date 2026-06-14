@@ -1,10 +1,6 @@
 from __future__ import annotations
-"""
-Extracts structured fields from raw REF 2021 case study data.
-Matches a case study to a specific lead where possible (by professor name).
-"""
+
 import re
-from difflib import SequenceMatcher
 
 
 def _first_n_sentences(text: str, n: int = 3) -> str:
