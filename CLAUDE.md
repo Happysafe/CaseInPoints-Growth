@@ -14,7 +14,7 @@ A B2B lead intelligence and sales pipeline targeting UK university professors an
 ```
 Layer 1: Lead Intelligence     → Python pipeline (COMPLETE)
 Layer 2: CRM                   → Notion database (COMPLETE — 70 lead pages live)
-Layer 3: Outreach Sequence     → Claude-drafted emails (NOT STARTED)
+Layer 3: Outreach Sequence     → Claude-drafted emails (BUILT — generator done; no emails sent yet)
 Layer 4: Trial Activation      → Calendly + Loom (NOT STARTED)
 Layer 5: Post-Trial Conversion → Claude diagnostic reports (NOT STARTED)
 ```
@@ -99,7 +99,7 @@ The CRM reflects **institution-level** REF Impact performance plus UoA-specific 
 
 Plan file: `/Users/user/.claude/plans/now-classify-universities-in-glittery-teapot.md`
 
-Each university is bucketed into one of four **trajectory categories** (2014→2021) that drive outreach framing. Pushed to all 71 Notion pages via `push_categories_to_notion.py` (a standalone backfill mirroring `push_tiers_to_notion.py`); also wired into `_university_fields`/`_build_properties` so future `run.py` pushes set them automatically.
+Each university is bucketed into one of four **trajectory categories** (2014→2021) that drive outreach framing. Pushed to all 71 Notion pages via `push_categories_to_notion.py`; also wired into `_university_fields`/`_build_properties` so future `run.py` pushes set them automatically. Both one-shot backfills (`push_categories_to_notion.py`, `push_tiers_to_notion.py`) now share the load/schema/patch-loop/CLI scaffolding in `pipeline/notion_backfill.py` (`run_backfill`), supplying only their per-lead `compute`/`build_props`/`format_line` callbacks.
 
 - **University Category** (select: Leaders / Improvers / Stagnant / At Risk), **Change in 4\*** and **Change in 3\*+** (number, percent) — new Notion fields.
 - **Classified on the Overall sub-profile, NOT Impact.** REF 2021 impact scores are inflated sector-wide (most research-intensive universities clear 50% Impact 4\*), so Impact can't discriminate — a 50% rule made ~16/22 leads "Leaders" and flagged nobody "At Risk". Overall 4\* spreads ~21–67% and yields a real split (current: 7 Leaders / 11 Improvers / 2 Stagnant / 2 At Risk). The separate `Impact 4*` columns are unaffected.
@@ -119,6 +119,7 @@ New modules:
 - `pipeline/ref_results_scraper.py` — year-aware quality-profile loader (`_YEARS` config); `get_profile(uni, uoa, year)` and `get_university_profile(uni, year, profile='impact')` (the `profile` arg selects the sub-profile to aggregate — `university_category.py` passes `'overall'`).
 - `pipeline/university_aggregator.py` — Claude `claude-opus-4-7` aggregator, caches to `output/university_assessments.json`.
 - `pipeline/university_category.py` — REF trajectory classifier (`classify_university`, `categorise_leads`); reads cached profiles only, no scraping.
+- `pipeline/notion_backfill.py` — shared scaffolding (`run_backfill`, `patch_page`) for the one-shot `push_*_to_notion.py` scripts. Shared serialisers live in `notion_push.py` (`pp_to_percent` for pp→Notion-percent; `quality_mean` in `ref_results_scraper.py` for the REF GPA mean).
 
 ---
 
@@ -138,9 +139,9 @@ Run: `python run.py` (defaults to `Research Impact Market.xlsx`)
 
 ## Next Steps — Layers 3–5
 
-### Layer 3 — Outreach Sequence (build next)
+### Layer 3 — Outreach Sequence (BUILT — generator done; no emails sent yet)
 
-Generate a 3-touch personalised email sequence per lead using their enriched CRM data:
+Generates a 3-touch personalised email sequence per lead from their enriched CRM data:
 
 | Touch | Timing | Hook |
 |-------|--------|------|
@@ -152,10 +153,9 @@ Generate a 3-touch personalised email sequence per lead using their enriched CRM
 **Tone:** Professional, peer-level, specific. Not salesy. "We noticed something interesting."  
 **No bulk sending** — human reviews and sends each email manually.
 
-Suggested implementation:
-- Script to generate 3 emails per lead using Claude (claude-opus-4-7 for quality)
-- Save to `output/outreach/lead_{id}/` as markdown files
-- Optionally push drafts to Notion as sub-pages under each lead record
+**What was built:**
+- `pipeline/outreach.py` — `generate_outreach(lead, ...)` drafts all 3 touches with Claude `claude-opus-4-7` (static system prompt is prompt-cached). Writes `output/outreach/lead_{id}/touch_{1,2,3}.md`; partial output is cleaned up on failure. Optionally pushes drafts to Notion as sub-pages and advances Stage → "Contacted".
+- `generate_outreach.py` — CLI orchestrator: `python generate_outreach.py [--tier 1|2|3] [--lead-id N] [--resume] [--dry-run] [--push-notion]`. Filters to `role_type == 'professor'`, assigns tiers via `tier_leads`, and checkpoints to `output/outreach_checkpoint.json`. Recommended order: `--dry-run` → single `--lead-id` live test → full `--tier 1` batch.
 
 ### Layer 4 — Trial Activation
 
