@@ -5,7 +5,6 @@ Only runs for leads with role_type == 'professor'.
 from __future__ import annotations
 
 import logging
-import os
 import time
 
 import requests
@@ -15,16 +14,14 @@ logger = logging.getLogger(__name__)
 ORCID_SEARCH_URL = "https://pub.orcid.org/v3.0/search/"
 SS_AUTHOR_SEARCH_URL = "https://api.semanticscholar.org/graph/v1/author/search"
 
-_SS_API_KEY = os.getenv('SEMANTIC_SCHOLAR_KEY', '')
-# Authenticated requests allow 100 req/s; unauthenticated cap is 1 req/s.
-REQUEST_DELAY = 0.05 if _SS_API_KEY else 1.1
+# Semantic Scholar: the provided SEMANTIC_SCHOLAR_KEY returns 403, so we use
+# unauthenticated access (works fine for our volume — 71 leads << 100 req/5min).
+REQUEST_DELAY = 1.1  # seconds — respects Semantic Scholar's ~1 req/sec cap
 
 ORCID_HEADERS = {
     'Accept': 'application/json',
     'User-Agent': 'REFImpactPipeline/1.0 (contact: research@caseinpoints.com)',
 }
-
-SS_HEADERS = {'x-api-key': _SS_API_KEY} if _SS_API_KEY else {}
 
 
 def _get(url: str, params: dict = None, headers: dict = None, timeout: int = 20) -> dict | None:
@@ -112,7 +109,6 @@ def enrich_semantic_scholar(contact_name: str) -> dict:
             'fields': 'name,hIndex,citationCount',
             'limit': 3,
         },
-        headers=SS_HEADERS,
     )
 
     if not data:
@@ -131,7 +127,6 @@ def enrich_semantic_scholar(contact_name: str) -> dict:
         papers_data = _get(
             f'https://api.semanticscholar.org/graph/v1/author/{author_id}/papers',
             params={'fields': 'title,citationCount', 'limit': 5},
-            headers=SS_HEADERS,
         )
         if papers_data:
             papers = papers_data.get('data', [])

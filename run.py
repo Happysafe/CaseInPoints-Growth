@@ -69,16 +69,22 @@ def save_outputs(leads: list[dict]):
     logger.info(f"Saved {len(leads)} leads → {ENRICHED_JSON} and {ENRICHED_CSV}")
 
 
-def process_lead(lead: dict, dry_run: bool = False) -> dict:
-    university = lead['university']
-
-    uoa_result = infer_uoa(lead['position'], university)
+def assign_uoa(lead: dict) -> dict:
+    """Infer the lead's Unit of Assessment and write the uoa_* fields in place."""
+    uoa_result = infer_uoa(lead['position'], lead['university'])
     lead.update({
         'uoa_code': uoa_result['uoa_code'],
         'uoa_name': uoa_result['uoa_name'],
         'uoa_confidence': uoa_result['confidence'],
         'uoa_matched_keywords': uoa_result['matched_keywords'],
     })
+    return uoa_result
+
+
+def process_lead(lead: dict, dry_run: bool = False) -> dict:
+    university = lead['university']
+
+    uoa_result = assign_uoa(lead)
     logger.info(
         f"  UoA: {uoa_result['uoa_code'] or 'Unknown'} — {uoa_result['uoa_name']} "
         f"(confidence={uoa_result['confidence']})"
@@ -189,6 +195,12 @@ def main():
     logger.info(f"Loading leads from: {args.input}")
     leads = load_leads(args.input)
     logger.info(f"Loaded {len(leads)} leads")
+
+    # Infer UoA for every lead up front so the aggregation below has uoa_code to
+    # group by. (process_lead re-runs this per lead; it's idempotent.)
+    logger.info("Inferring Units of Assessment…")
+    for lead in leads:
+        assign_uoa(lead)
 
     logger.info("Warming REF 2021 quality profiles cache…")
     warm_results_cache()
